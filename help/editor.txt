@@ -3,11 +3,24 @@ proj editor — save a named editor launch template
 Usage:
   proj editor <name> <commandTemplate>
 
-The template is run through the system shell. Use the placeholder $dir for the
-project directory (paths with spaces are quoted for you).
+The template is run through the system shell. Placeholders (paths are quoted for you):
 
-Example:
-  proj editor vim "nvim $dir"
+  $dir   Directory being opened (worktree, --wt target, or project root with -r).
+  $root  Project root (pa_* folder), even when $dir is a worktree.
+
+  $rc_<key>  Value from that project's .projrc (keys are lowercased in .projrc).
+             For workspace and code_workspace, a relative path is resolved against
+             $root; other keys are substituted as literal strings (URLs, names, …).
+
+Example (VS Code workspace file; set workspace in .projrc, see proj open help):
+  proj editor vscode-ws 'code $rc_workspace'
+
+Quote the template with single quotes in your shell so $dir is not expanded when
+you run proj editor (in bash/zsh, double quotes expand $dir, often to nothing).
+
+Examples:
+  proj editor vim 'nvim $dir'
+  proj editor cursor 'cursor $dir'
 
 Then: proj open MyProject vim
 

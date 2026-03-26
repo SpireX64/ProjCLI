@@ -8,4 +8,5 @@ Keys are stored lowercase. The value may contain spaces (everything after the ke
 Examples:
   proj set MyApp tracker https://github.com/org/repo#issues
   proj set MyApp editor vim          # use named editor from `proj editor`
+  proj set MyApp workspace My.code-workspace   # for templates using $rc_workspace (VS Code)
   proj set MyApp tags web, mobile    # prefer proj tag -p for single-tag changes

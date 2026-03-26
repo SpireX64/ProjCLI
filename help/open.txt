@@ -13,12 +13,20 @@ Default: opens the main worktree worktrees/<ProjectName>-main (even if there is 
 Without <editorName>: if .projrc has `editor = <name>` and that name is configured via
 `proj editor`, that template is used. Otherwise uses $EDITOR, then $VISUAL, then `code`.
 
-$dir in editor templates is replaced with the directory being opened (main or extra worktree,
-or project root with -r).
+Editor templates (proj editor / .projrc editor = …) support placeholders; see proj editor help.
+Notably $dir is the opened folder, $root is the pa_* project root, and $rc_<key> reads .projrc
+(e.g. $rc_workspace for a .code-workspace path).
+
+VS Code workspace: add to .projrc, for example:
+  workspace = MyApp.code-workspace
+(path relative to project root, or absolute). Use a template such as:
+  proj editor vscode-ws 'code $rc_workspace'
+  proj set MyApp editor vscode-ws
+(or pass vscode-ws on the command line: proj open MyApp vscode-ws)
 
 Examples:
   proj open MyProject
   proj open MyProject -r
   proj open MyProject --wt StoreRefactor
-  proj editor vim "nvim $dir"
+  proj editor vim 'nvim $dir'
   proj open MyProject vim

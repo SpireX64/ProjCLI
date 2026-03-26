@@ -35,6 +35,7 @@ This tool is built for **my own** local project workflow (naming rules, director
 - **Tags** with optional root registry (`.tags`)
 - **Favorites**, **rename** (`proj mv`), **remove** (`proj rm`)
 - **Status** and key/value **get/set** on `.projrc`
+- **Named editor templates** (`proj editor`) for `proj open` (placeholders `$dir`, `$root`, `$rc_<key>`)
 - **bash / zsh / fish** completion
 
 ## Requirements
@@ -94,7 +95,8 @@ Plain text: a trimmed line that is empty or starts with `#` is a comment. Lines 
 - `name` — display title (default: folder `ProjectName`)
 - `owner` — optional (also prompted on `proj new` / `proj clone`)
 - `created` — ISO timestamp (set automatically; from first commit in `worktrees/<ProjectName>-main/` when available)
-- Any other keys (e.g. `tracker`, `deploy`) are shown in `proj status <name>` and `proj get`.
+- `editor` — optional name of a template saved with `proj editor` (used by `proj open` when no editor is passed on the command line)
+- Any other keys (e.g. `tracker`, `workspace`, `deploy`) are shown in `proj status <name>` and `proj get`.
 
 `proj verify` creates a missing `.projrc` for each valid project folder (migration).
 
@@ -191,6 +193,7 @@ proj tag -d web    # fails if any project still uses tag web
 | `proj tags` | Print all tag ids and descriptions from `.tags` |
 | `proj new [path] [--dry-run] [--force]` | Create layout + `.projrc` (import: TTY confirm or `--force`) |
 | `proj clone <url>` | New layout + `git clone` into `worktrees/<ProjectName>-main/` |
+| `proj editor <name> <template>` | Save a shell command template for editors |
 | `proj open <name> [-r] [--wt slug] [editor]` | Open main worktree, project root, or extra worktree in editor |
 | `proj wt <name> <slug> [-b branch]` | Add linked git worktree under `worktrees/` |
 | `proj status [name] [--json]` | Summary or one-project detail; `--json` for machine-readable output |

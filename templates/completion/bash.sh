@@ -47,7 +47,7 @@ _proj() {
       if [ "$COMP_CWORD" -eq 2 ]; then
         COMPREPLY=( $(compgen -W "$(__proj_projects)" -- "$cur") )
       elif [ "$COMP_CWORD" -eq 3 ]; then
-        COMPREPLY=( $(compgen -W "name owner created tracker editor" -- "$cur") )
+        COMPREPLY=( $(compgen -W "name owner created tracker editor workspace code_workspace" -- "$cur") )
       fi
       ;;
     get)

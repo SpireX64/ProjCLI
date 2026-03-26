@@ -31,7 +31,7 @@ _proj() {
     set)
       case $CURRENT in
         3) compadd -a projects ;;
-        4) compadd name owner created tracker editor ;;
+        4) compadd name owner created tracker editor workspace code_workspace ;;
       esac
       ;;
     get)
