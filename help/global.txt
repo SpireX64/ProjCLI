@@ -11,7 +11,8 @@ Commands:
   tags                   List all tag ids and descriptions from .tags
   new [path] [--dry-run] [--force] Create project layout (import needs TTY or --force)
   clone <url>            git clone into a new project layout (interactive naming)
-  open <name>            Open project folder in $EDITOR / VISUAL / code
+  editor <name> <tmpl>   Save named editor command ($dir = project path)
+  open <name> [editor]   Open project (optional named editor; see proj open --help)
   status [name] [--json] Git-style summary for all projects, or details for one (JSON with --json)
   get <name> <key>       Print one value from .projrc (keys case-insensitive)
   set <name> <key> <value> Write one key in .projrc (trailing # on a line is a comment)
@@ -20,7 +21,9 @@ Commands:
   mv <from> <to>         Rename project under projects root (or interactive: mv <name>)
   rm <name> [--force]    Remove project directory (confirm; --force skips prompt)
   tag <id> [description] Add or update tag in .tags
-  tag -d <id>            Remove tag if unused
+  tag -d <id>            Remove tag from registry if unused by projects
+  tag <id> -p <project>  Add tag to project .projrc (id must be in .tags)
+  tag <id> -d -p <proj> Remove tag from project
   verify                 Check layout; creates missing .projrc for valid projects
   completion bash|zsh|fish   Print shell completion script (source it)
 

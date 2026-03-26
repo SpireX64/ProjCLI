@@ -6,3 +6,6 @@ Usage:
 
 Paths are always relative to the configured projects root. For other moves use
 the system mv command.
+
+Tags are stored in each project’s .projrc (`tags`); change them with
+`proj tag … -p`, not with mv.

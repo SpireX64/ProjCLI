@@ -14,9 +14,8 @@ test('parseFolderName without tags', () => {
   assert.deepEqual(p.tags, []);
 });
 
-test('parseFolderName with tags', () => {
-  const p = parseFolderName('pa_MyApp_web-rn');
-  assert.deepEqual(p.tags, ['web', 'rn']);
+test('parseFolderName rejects legacy tag suffix in folder name', () => {
+  assert.equal(parseFolderName('pa_MyApp_web-rn'), null);
 });
 
 test('validateTagSegment', () => {
@@ -26,7 +25,7 @@ test('validateTagSegment', () => {
 });
 
 test('buildFolderName', () => {
-  assert.equal(buildFolderName('p', 'a', 'X', ['web']), 'pa_X_web');
+  assert.equal(buildFolderName('p', 'a', 'X'), 'pa_X');
 });
 
 test('invalid folder name', () => {

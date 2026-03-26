@@ -7,6 +7,9 @@ __proj_projects() {
 __proj_favs() {
   proj __complete fav-names 2>/dev/null | tr '\n' ' '
 }
+__proj_editors() {
+  proj __complete editors 2>/dev/null | tr '\n' ' '
+}
 _proj() {
   local cur
   COMPREPLY=()
@@ -16,7 +19,14 @@ _proj() {
     return
   fi
   case "${COMP_WORDS[1]}" in
-    open|status|pwd|rm)
+    open)
+      if [ "$COMP_CWORD" -eq 2 ]; then
+        COMPREPLY=( $(compgen -W "$(__proj_projects)" -- "$cur") )
+      elif [ "$COMP_CWORD" -eq 3 ]; then
+        COMPREPLY=( $(compgen -W "$(__proj_editors)" -- "$cur") )
+      fi
+      ;;
+    status|pwd|rm)
       if [ "$COMP_CWORD" -eq 2 ]; then
         COMPREPLY=( $(compgen -W "$(__proj_projects)" -- "$cur") )
       fi
@@ -25,7 +35,7 @@ _proj() {
       if [ "$COMP_CWORD" -eq 2 ]; then
         COMPREPLY=( $(compgen -W "$(__proj_projects)" -- "$cur") )
       elif [ "$COMP_CWORD" -eq 3 ]; then
-        COMPREPLY=( $(compgen -W "name owner created tracker" -- "$cur") )
+        COMPREPLY=( $(compgen -W "name owner created tracker editor" -- "$cur") )
       fi
       ;;
     get)

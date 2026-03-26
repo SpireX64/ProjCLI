@@ -8,21 +8,27 @@ test('describeOwnType', () => {
 });
 
 test('formatProjectLine with tags', () => {
-  const line = formatProjectLine({
-    own: 'p',
-    type: 'a',
-    projectName: 'MyApp',
-    tags: ['web', 'rn'],
-  });
+  const line = formatProjectLine(
+    {
+      own: 'p',
+      type: 'a',
+      projectName: 'MyApp',
+      tags: [],
+    },
+    ['web', 'rn']
+  );
   assert.equal(line, 'MyApp (personal application) — web, rn');
 });
 
 test('formatProjectLine without tags', () => {
-  const line = formatProjectLine({
-    own: 'p',
-    type: 'a',
-    projectName: 'Solo',
-    tags: [],
-  });
+  const line = formatProjectLine(
+    {
+      own: 'p',
+      type: 'a',
+      projectName: 'Solo',
+      tags: [],
+    },
+    []
+  );
   assert.equal(line, 'Solo (personal application)');
 });

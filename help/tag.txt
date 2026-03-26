@@ -1,10 +1,15 @@
-proj tag — tag registry (.tags)
+proj tag — tag registry (.tags) or assign tags to a project
 
-Usage:
-  proj tag <camelCaseId> [description...]
-  proj tag -d <camelCaseId>
+Registry (global .tags file):
+  proj tag <id> [description...]
+  proj tag -d <id>
 
-Description is optional (may be empty). One line per tag; no newlines in description.
-Tag ids must match folder tag segments (camelCase).
+Project (.projrc field `tags`, comma-separated):
+  proj tag <id> -p <ProjectName|basename>
+  proj tag <id> -d -p <ProjectName|basename>
+
+Tag ids match naming rules (see proj new): e.g. web, iosApp. The project form
+requires the id to exist in .tags (register it first, or create a project with
+tags while .tags is empty so ids are auto-registered).
 
 Use `proj tags` to list all registered tags with descriptions.

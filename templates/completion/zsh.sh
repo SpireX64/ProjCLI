@@ -1,21 +1,28 @@
 #compdef proj
 _proj() {
-  local -a cmds projects favs
+  local -a cmds projects favs editors
   cmds=(${(f)"$(proj __complete commands 2>/dev/null)"})
   projects=(${(f)"$(proj __complete projects 2>/dev/null)"})
   favs=(${(f)"$(proj __complete fav-names 2>/dev/null)"})
+  editors=(${(f)"$(proj __complete editors 2>/dev/null)"})
   if (( CURRENT == 2 )); then
     compadd -a cmds
     return
   fi
   case $words[2] in
-    open|status|pwd|rm)
+    open)
+      case $CURRENT in
+        3) compadd -a projects ;;
+        4) compadd -a editors ;;
+      esac
+      ;;
+    status|pwd|rm)
       (( CURRENT == 3 )) && compadd -a projects
       ;;
     set)
       case $CURRENT in
         3) compadd -a projects ;;
-        4) compadd name owner created tracker ;;
+        4) compadd name owner created tracker editor ;;
       esac
       ;;
     get)

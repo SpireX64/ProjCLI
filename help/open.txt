@@ -1,6 +1,15 @@
 proj open — open project in editor
 
 Usage:
-  proj open <ProjectName|basename>
+  proj open <ProjectName|basename> [<editorName>]
 
-Uses $EDITOR, then $VISUAL, then `code`, passing the project directory path.
+Without a second argument: if .projrc has `editor = <name>` and that name is
+configured via `proj editor`, that template is used. Otherwise uses $EDITOR,
+then $VISUAL, then `code`, passing the project directory path.
+
+With <editorName>: runs the template saved by `proj editor <name> ...` ($dir
+is replaced with the project path).
+
+Example:
+  proj editor vim "nvim $dir"
+  proj open MyProject vim

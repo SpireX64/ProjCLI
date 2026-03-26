@@ -1,0 +1,15 @@
+proj editor — save a named editor launch template
+
+Usage:
+  proj editor <name> <commandTemplate>
+
+The template is run through the system shell. Use the placeholder $dir for the
+project directory (paths with spaces are quoted for you).
+
+Example:
+  proj editor vim "nvim $dir"
+
+Then: proj open MyProject vim
+
+Names must match [a-zA-Z0-9_-]+. Templates are stored in ~/.config/proj/config.json
+under the "editors" object.
