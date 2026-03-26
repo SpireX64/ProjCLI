@@ -1,0 +1,16 @@
+proj wt — add a git worktree under the project
+
+Usage:
+  proj wt <ProjectName|basename> <slug> [-b <branch>]
+
+Creates worktrees/<ProjectName>-<slug> using `git worktree add` from the main worktree.
+Requires a git repository in worktrees/<ProjectName>-main.
+
+  -b <branch>   Create and checkout new branch <branch> (may contain `/`, e.g. feature/x).
+                If omitted, the new branch name defaults to <slug>.
+
+<slug> must be a safe single path segment (ASCII, no spaces); the name `main` is reserved.
+
+Examples:
+  proj wt MyProject StoreRefactor
+  proj wt MyProject new-store -b feature/new-store

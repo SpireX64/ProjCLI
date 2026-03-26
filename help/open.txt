@@ -1,15 +1,24 @@
 proj open — open project in editor
 
 Usage:
-  proj open <ProjectName|basename> [<editorName>]
+  proj open <ProjectName|basename> [options] [<editorName>]
 
-Without a second argument: if .projrc has `editor = <name>` and that name is
-configured via `proj editor`, that template is used. Otherwise uses $EDITOR,
-then $VISUAL, then `code`, passing the project directory path.
+Options:
+  -r, --root     Open the project root (pa_* folder), not a worktree
+  --wt <slug>    Open worktrees/<ProjectName>-<slug> (slug or full folder name)
 
-With <editorName>: runs the template saved by `proj editor <name> ...` ($dir
-is replaced with the project path).
+Default: opens the main worktree worktrees/<ProjectName>-main (even if there is no .git yet).
+-r and --wt cannot be used together.
 
-Example:
+Without <editorName>: if .projrc has `editor = <name>` and that name is configured via
+`proj editor`, that template is used. Otherwise uses $EDITOR, then $VISUAL, then `code`.
+
+$dir in editor templates is replaced with the directory being opened (main or extra worktree,
+or project root with -r).
+
+Examples:
+  proj open MyProject
+  proj open MyProject -r
+  proj open MyProject --wt StoreRefactor
   proj editor vim "nvim $dir"
   proj open MyProject vim

@@ -3,8 +3,8 @@ proj new — create standard layout
 Usage:
   proj new [path] [--dry-run] [--force]
 
-Creates: repo/, worktrees/, notes/, tasks/{archive,backlog}/, etc., and `.projrc`
-(created date, display name, optional owner from prompts).
+Creates: worktrees/, notes/, tasks/{archive,backlog}/, etc., empty main worktree
+worktrees/<ProjectName>-main, and `.projrc` (created date, display name, optional owner from prompts).
 
 If path does not exist and basename is a valid project folder name, creates
 {root}/<basename>/ directly. Otherwise path basename suggests ProjectName (PascalCase)
@@ -16,9 +16,9 @@ Ownership (one letter, folder prefix):
 Project kind (one letter, folder prefix):
   a = application, p = package, x = experiment
 
-If path exists as a directory, contents are moved into <new>/repo/ (with or without `.git`),
-then the source directory is removed. From a TTY you must confirm removal of the source
-unless you pass --force. Without a TTY, --force is required for import. --dry-run skips
-import and removal.
+If path exists as a directory, contents are moved into <new>/worktrees/<ProjectName>-main/
+(with or without `.git`), then the source directory is removed. From a TTY you must confirm
+removal of the source unless you pass --force. Without a TTY, --force is required for import.
+--dry-run skips import and removal.
 
 ProjectName must be unique among projects under the root.

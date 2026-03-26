@@ -6,8 +6,8 @@ Usage:
 
   --json      Print JSON (summary array without a name; one detail object with a name)
 
-Without a name: one line per project (basename, whether repo/.git exists, branch, clean/dirty, worktree count).
+Without a name: one line per project (basename, whether main worktree has .git, branch, clean/dirty, worktree count).
 With --json and no name, each row includes a `tags` array from .projrc.
 
 With a name: full detail including a Tags section (ids with descriptions from .tags),
-main repo, worktrees, task files, and other .projrc keys (the `tags` line is shown only in Tags:).
+main worktree, worktrees under worktrees/, task files, and other .projrc keys (the `tags` line is shown only in Tags:).

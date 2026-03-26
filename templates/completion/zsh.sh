@@ -13,10 +13,19 @@ _proj() {
     open)
       case $CURRENT in
         3) compadd -a projects ;;
-        4) compadd -a editors ;;
+        4) compadd -r --root --wt; compadd -a editors ;;
       esac
       ;;
-    status|pwd|rm)
+    pwd)
+      case $CURRENT in
+        3) compadd -a projects ;;
+        4) compadd -- --wt ;;
+      esac
+      ;;
+    wt)
+      (( CURRENT == 3 )) && compadd -a projects
+      ;;
+    status|rm)
       (( CURRENT == 3 )) && compadd -a projects
       ;;
     set)

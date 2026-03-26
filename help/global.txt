@@ -6,13 +6,13 @@ Usage:
 Commands:
   dir [path] [-w name]   Show/set projects root; register named workspace (proj dir --help)
   use [workspace]        Switch root to a saved workspace, or list workspaces
-  pwd [name]             Print projects root, or absolute path to a project
+  pwd [name] [--wt [slug]] Print projects root, project path, or worktree path (proj pwd --help)
   ls [options] [tags...] List projects (-f, --json, --grep, -o -t filters)
   tags                   List all tag ids and descriptions from .tags
   new [path] [--dry-run] [--force] Create project layout (import needs TTY or --force)
   clone <url>            git clone into a new project layout (interactive naming)
   editor <name> <tmpl>   Save named editor command ($dir = project path)
-  open <name> [editor]   Open project (optional named editor; see proj open --help)
+  open <name> [opts] [editor] Open main worktree or project root (proj open --help)
   status [name] [--json] Git-style summary for all projects, or details for one (JSON with --json)
   get <name> <key>       Print one value from .projrc (keys case-insensitive)
   set <name> <key> <value> Write one key in .projrc (trailing # on a line is a comment)
@@ -24,6 +24,7 @@ Commands:
   tag -d <id>            Remove tag from registry if unused by projects
   tag <id> -p <project>  Add tag to project .projrc (id must be in .tags)
   tag <id> -d -p <proj> Remove tag from project
+  wt <name> <slug> [-b branch] Add git worktree under worktrees/ (proj wt --help)
   verify                 Check layout; creates missing .projrc for valid projects
   completion bash|zsh|fish   Print shell completion script (source it)
 

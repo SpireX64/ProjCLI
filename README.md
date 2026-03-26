@@ -77,8 +77,7 @@ Each project is a single folder under your [projects root](#setup). Its name fol
 ```
 pa_MyApp_web/       # example basename (yours will differ)
 ├── .projrc         # metadata (name, owner, created, custom key = value)
-├── repo/           # main git clone; populated by `proj clone`, imports, or you manually
-├── worktrees/      # additional git worktrees for this repo
+├── worktrees/      # git worktrees: <ProjectName>-main (primary), <ProjectName>-<slug> (extras)
 ├── notes/          # project notes (e.g. *.md, *.drawio, *.txt)
 ├── tasks/          # active tasks as *.txt in this folder
 │   ├── archive/    # finished tasks (*.txt)
@@ -86,7 +85,7 @@ pa_MyApp_web/       # example basename (yours will differ)
 ├── etc/            # configs, drafts, misc.
 ```
 
-If you point `proj new` at an **existing directory**, its contents are moved into `repo/` (whether or not there is a `.git` folder), then the old directory is removed. With a TTY you confirm removal unless you pass `--force`; without a TTY, import requires `--force`. `--dry-run` skips import and removal.
+If you point `proj new` at an **existing directory**, its contents are moved into `worktrees/<ProjectName>-main/` (whether or not there is a `.git` folder), then the old directory is removed. With a TTY you confirm removal unless you pass `--force`; without a TTY, import requires `--force`. `--dry-run` skips import and removal.
 
 ## `.projrc`
 
@@ -94,7 +93,7 @@ Plain text: a trimmed line that is empty or starts with `#` is a comment. Lines 
 
 - `name` — display title (default: folder `ProjectName`)
 - `owner` — optional (also prompted on `proj new` / `proj clone`)
-- `created` — ISO timestamp (set automatically; from first commit in `repo/` when available)
+- `created` — ISO timestamp (set automatically; from first commit in `worktrees/<ProjectName>-main/` when available)
 - Any other keys (e.g. `tracker`, `deploy`) are shown in `proj status <name>` and `proj get`.
 
 `proj verify` creates a missing `.projrc` for each valid project folder (migration).
@@ -187,12 +186,13 @@ proj tag -d web    # fails if any project still uses tag web
 |--------|---------|
 | `proj dir [path] [-w name]` | Show/set root; register named workspace (see Setup) |
 | `proj use [name]` | List or switch workspaces |
-| `proj pwd [name]` | Print root or absolute path to a project |
+| `proj pwd [name] [--wt [slug]]` | Print root, project path, or worktree path |
 | `proj ls [--json] [-f] [--grep re] [-o chars] [-t chars] [tags...]` | List projects |
 | `proj tags` | Print all tag ids and descriptions from `.tags` |
 | `proj new [path] [--dry-run] [--force]` | Create layout + `.projrc` (import: TTY confirm or `--force`) |
-| `proj clone <url>` | New layout + `git clone` into `repo/` |
-| `proj open <name>` | Open project in `$EDITOR` / `VISUAL` / `code` |
+| `proj clone <url>` | New layout + `git clone` into `worktrees/<ProjectName>-main/` |
+| `proj open <name> [-r] [--wt slug] [editor]` | Open main worktree, project root, or extra worktree in editor |
+| `proj wt <name> <slug> [-b branch]` | Add linked git worktree under `worktrees/` |
 | `proj status [name] [--json]` | Summary or one-project detail; `--json` for machine-readable output |
 | `proj get <name> <key>` | One value from `.projrc` (for scripts) |
 | `proj set <name> <key> <value...>` | Set one key in `.projrc` |

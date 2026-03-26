@@ -5,6 +5,6 @@ Usage:
 
 Keys are case-insensitive. Special cases:
   name    — display name from .projrc, or folder ProjectName if unset
-  created — from .projrc or inferred from first commit in repo/
+  created — from .projrc or inferred from first commit in worktrees/<ProjectName>-main
 
 Exit code 1 if key is missing (except name/created).

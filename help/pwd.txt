@@ -1,8 +1,12 @@
 proj pwd — print path
 
 Usage:
-  proj pwd              Print projects root (same as `proj dir` when set)
-  proj pwd <name>       Print absolute path to project (basename or ProjectName)
+  proj pwd                        Print projects root (same as `proj dir` when set)
+  proj pwd <name>                 Print absolute path to project root (basename or ProjectName)
+  proj pwd <name> --wt            Print path to main worktree (worktrees/<ProjectName>-main)
+  proj pwd <name> --wt <slug>     Print path to worktrees/<ProjectName>-<slug>
 
-Shell note: Node cannot change the parent shell directory. Use:
+Shell note: Node cannot change the parent shell directory. Examples:
   cd "$(proj pwd <ProjectName>)"
+  cd "$(proj pwd <ProjectName> --wt)"
+  cd "$(proj pwd <ProjectName> --wt my-branch)"

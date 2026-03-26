@@ -23,10 +23,22 @@ _proj() {
       if [ "$COMP_CWORD" -eq 2 ]; then
         COMPREPLY=( $(compgen -W "$(__proj_projects)" -- "$cur") )
       elif [ "$COMP_CWORD" -eq 3 ]; then
-        COMPREPLY=( $(compgen -W "$(__proj_editors)" -- "$cur") )
+        COMPREPLY=( $(compgen -W "-r --root --wt $(__proj_editors)" -- "$cur") )
       fi
       ;;
-    status|pwd|rm)
+    pwd)
+      if [ "$COMP_CWORD" -eq 2 ]; then
+        COMPREPLY=( $(compgen -W "$(__proj_projects)" -- "$cur") )
+      elif [ "$COMP_CWORD" -eq 3 ]; then
+        COMPREPLY=( $(compgen -W "--wt" -- "$cur") )
+      fi
+      ;;
+    wt)
+      if [ "$COMP_CWORD" -eq 2 ]; then
+        COMPREPLY=( $(compgen -W "$(__proj_projects)" -- "$cur") )
+      fi
+      ;;
+    status|rm)
       if [ "$COMP_CWORD" -eq 2 ]; then
         COMPREPLY=( $(compgen -W "$(__proj_projects)" -- "$cur") )
       fi
