@@ -6,12 +6,19 @@ import path from 'path';
 import {
   completeTagIdsOutput,
   completeProjrcKeysOutput,
+  generateCompletionScript,
 } from '../lib/completion.js';
 
 test('completeProjrcKeysOutput is non-empty sorted lines', () => {
   const s = completeProjrcKeysOutput();
   assert.ok(s.includes('name'));
   assert.ok(s.includes('\n'));
+});
+
+test('generateCompletionScript(powershell) includes Register-ArgumentCompleter', () => {
+  const s = generateCompletionScript('powershell');
+  assert.ok(s.includes('Register-ArgumentCompleter'));
+  assert.ok(s.includes('__complete'));
 });
 
 test('completeTagIdsOutput reads .tags', () => {

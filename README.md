@@ -36,7 +36,7 @@ This tool is built for **my own** local project workflow (naming rules, director
 - **Favorites**, **rename** (`proj mv`), **remove** (`proj rm`)
 - **Status** and key/value **get/set** on `.projrc`
 - **Named editor templates** (`proj editor`) for `proj open` (placeholders `$dir`, `$root`, `$rc_<key>`)
-- **bash / zsh / fish** completion
+- **bash / zsh / fish / PowerShell** completion
 
 ## Requirements
 
@@ -140,6 +140,9 @@ source <(proj completion zsh)
 
 # fish — save and source, or use `fish -c "source (proj completion fish | psub)"`
 proj completion fish | source
+
+# PowerShell — run once or add to profile
+iex (proj completion powershell | Out-String)
 ```
 
 After `npm install -g`, re-source if the `proj` path changes.
@@ -204,7 +207,7 @@ proj tag -d web    # fails if any project still uses tag web
 | `proj rm <name> [--force]` | Remove project directory (confirm; favorites need `--force` or unfav first) |
 | `proj tag` / `proj tag -d` | Maintain `.tags` |
 | `proj verify` | Validate tree + write missing `.projrc` |
-| `proj completion bash\|zsh\|fish` | Print completion script |
+| `proj completion bash\|zsh\|fish\|powershell` | Print completion script (`pwsh` alias) |
 
 Use `proj <command> --help` for English help text.
 

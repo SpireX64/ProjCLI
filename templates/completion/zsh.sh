@@ -45,7 +45,7 @@ _proj() {
       (( CURRENT == 3 )) && { compadd -- -h --help; compadd -a workspaces }
       ;;
     completion)
-      (( CURRENT == 3 )) && compadd bash zsh fish -h --help
+      (( CURRENT == 3 )) && compadd bash zsh fish powershell pwsh -h --help
       ;;
     editor)
       (( CURRENT == 3 )) && { compadd -- -h --help; compadd -a editors }

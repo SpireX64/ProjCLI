@@ -4,13 +4,16 @@ Usage:
   proj completion bash
   proj completion zsh
   proj completion fish
+  proj completion powershell   (alias: pwsh)
 
 Examples:
   source <(proj completion bash)
   # zsh: add to ~/.zshrc
   source <(proj completion zsh)
+  # PowerShell: profile or one-shot
+  iex (proj completion powershell | Out-String)
 
 Internal: `proj __complete commands|projects|fav-names` is used by the script; not needed for normal use.
 
-Shell snippets live under templates/completion/ in the package (bash.sh, zsh.sh, fish.sh).
+Shell snippets live under templates/completion/ in the package (bash.sh, zsh.sh, fish.sh, powershell.ps1).
 The list of subcommands for `__complete commands` comes from lib/public-commands.js (same list as help pages).

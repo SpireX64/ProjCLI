@@ -55,7 +55,7 @@ _proj() {
       ;;
     completion)
       if [ "$COMP_CWORD" -eq 2 ]; then
-        COMPREPLY=( $(compgen -W "bash zsh fish -h --help" -- "$cur") )
+        COMPREPLY=( $(compgen -W "bash zsh fish powershell pwsh -h --help" -- "$cur") )
       fi
       ;;
     editor)

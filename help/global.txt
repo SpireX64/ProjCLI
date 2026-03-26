@@ -27,7 +27,7 @@ Commands:
   tag <id> -d -p <proj> Remove tag from project
   wt <name> <slug> [-b branch] Add git worktree under worktrees/ (proj wt --help)
   verify                 Check layout; creates missing .projrc for valid projects
-  completion bash|zsh|fish   Print shell completion script (source it)
+  completion bash|zsh|fish|powershell   Print shell completion script (source it; pwsh alias)
 
 Run `proj <command> --help` for details.
 

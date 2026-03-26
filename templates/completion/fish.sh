@@ -124,7 +124,7 @@ complete -c proj -n '__fish_seen_subcommand_from use; and test (count (commandli
 complete -c proj -n '__fish_seen_subcommand_from use; and test (count (commandline -opc)) -eq 2' -a '(proj __complete workspaces 2>/dev/null)'
 
 # completion
-complete -c proj -n '__fish_seen_subcommand_from completion; and test (count (commandline -opc)) -eq 2' -a 'bash zsh fish -h --help'
+complete -c proj -n '__fish_seen_subcommand_from completion; and test (count (commandline -opc)) -eq 2' -a 'bash zsh fish powershell pwsh -h --help'
 
 # editor
 complete -c proj -n '__fish_seen_subcommand_from editor; and test (count (commandline -opc)) -eq 2' -a '-h --help'
