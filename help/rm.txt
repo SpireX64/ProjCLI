@@ -1,0 +1,10 @@
+proj rm — delete a project directory under the projects root
+
+Usage:
+  proj rm <ProjectName|basename> [--force|-f]
+
+Removes the project folder recursively. With a TTY, asks for confirmation unless --force.
+
+If the project is a favorite symlink target, remove the favorite first or pass --force.
+
+Without a TTY, --force is required.

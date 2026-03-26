@@ -1,0 +1,6 @@
+proj clone — clone a repository into a new project layout
+
+Usage:
+  proj clone <url>
+
+Runs interactive prompts (same as proj new), creates the standard layout without a pre-made repo/, then `git clone <url> <project>/repo`.

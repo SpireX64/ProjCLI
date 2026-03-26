@@ -1,0 +1,30 @@
+proj — manage local project workspaces
+
+Usage:
+  proj <command> [arguments]
+
+Commands:
+  dir [path] [-w name]   Show/set projects root; register named workspace (proj dir --help)
+  use [workspace]        Switch root to a saved workspace, or list workspaces
+  pwd [name]             Print projects root, or absolute path to a project
+  ls [options] [tags...] List projects (-f, --json, --grep, -o -t filters)
+  tags                   List all tag ids and descriptions from .tags
+  new [path] [--dry-run] [--force] Create project layout (import needs TTY or --force)
+  clone <url>            git clone into a new project layout (interactive naming)
+  open <name>            Open project folder in $EDITOR / VISUAL / code
+  status [name] [--json] Git-style summary for all projects, or details for one (JSON with --json)
+  get <name> <key>       Print one value from .projrc (keys case-insensitive)
+  set <name> <key> <value> Write one key in .projrc (trailing # on a line is a comment)
+  fav <target>           Add favorite symlink in .fav/
+  fav -d <name>          Remove favorite symlink
+  mv <from> <to>         Rename project under projects root (or interactive: mv <name>)
+  rm <name> [--force]    Remove project directory (confirm; --force skips prompt)
+  tag <id> [description] Add or update tag in .tags
+  tag -d <id>            Remove tag if unused
+  verify                 Check layout; creates missing .projrc for valid projects
+  completion bash|zsh|fish   Print shell completion script (source it)
+
+Run `proj <command> --help` for details.
+
+Shell: this tool cannot change your shell cwd. Use:
+  cd "$(proj pwd <ProjectName>)"

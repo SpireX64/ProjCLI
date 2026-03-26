@@ -1,0 +1,9 @@
+proj set — write a key in .projrc
+
+Usage:
+  proj set <ProjectName|basename> <key> <value>
+
+Keys are stored lowercase. The value may contain spaces (everything after the key is the value).
+
+Example:
+  proj set MyApp tracker https://github.com/org/repo#issues

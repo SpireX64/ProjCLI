@@ -1,0 +1,12 @@
+proj verify — consistency check
+
+Also creates a missing `.projrc` for each valid project folder (migration).
+
+Checks:
+  - Directory names under root conform to project naming rules
+  - No duplicate ProjectName
+  - Tags on projects exist in .tags when .tags defines ids
+  - No broken symlinks in .fav/
+  - No duplicate tag ids in .tags (warning)
+
+Exits with code 1 if any issue is found. Migration lines print to stdout.

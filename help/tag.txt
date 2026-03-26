@@ -1,0 +1,10 @@
+proj tag — tag registry (.tags)
+
+Usage:
+  proj tag <camelCaseId> [description...]
+  proj tag -d <camelCaseId>
+
+Description is optional (may be empty). One line per tag; no newlines in description.
+Tag ids must match folder tag segments (camelCase).
+
+Use `proj tags` to list all registered tags with descriptions.

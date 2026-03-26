@@ -1,0 +1,9 @@
+proj dir — projects root
+
+Usage:
+  proj dir                      Print current projects root (error + hint if unset)
+  proj dir <path>               Save absolute path as projects root
+  proj dir <path> -w <name>     Register workspace name for path and set root
+  proj dir -w <name>            Save current root under workspace name
+
+Config file: ~/.config/proj/config.json (`root`, optional `workspaces`).

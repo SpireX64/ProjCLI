@@ -1,0 +1,8 @@
+complete -c proj -n '__fish_is_first_token' -a '(proj __complete commands 2>/dev/null)'
+complete -c proj -n '__fish_seen_subcommand_from open status pwd rm' -a '(proj __complete projects 2>/dev/null)'
+complete -c proj -n '__fish_seen_subcommand_from set; and test (count (commandline -opc)) -eq 2' -a '(proj __complete projects 2>/dev/null)'
+complete -c proj -n '__fish_seen_subcommand_from set; and test (count (commandline -opc)) -eq 3' -a 'name owner created tracker'
+complete -c proj -n '__fish_seen_subcommand_from get; and test (count (commandline -opc)) -eq 2' -a '(proj __complete projects 2>/dev/null)'
+complete -c proj -n '__fish_seen_subcommand_from get; and test (count (commandline -opc)) -eq 3' -a 'name owner created'
+complete -c proj -n '__fish_seen_subcommand_from mv' -a '(proj __complete projects 2>/dev/null)'
+complete -c proj -n '__fish_seen_subcommand_from fav' -a '(proj __complete projects 2>/dev/null)'

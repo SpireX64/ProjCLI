@@ -1,0 +1,35 @@
+{
+  "name": "projcli",
+  "version": "1.0.0",
+  "description": "CLI to manage local project workspaces (proj)",
+  "author": "SpireX (https://github.com/spirex)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spirex/projcli.git"
+  },
+  "homepage": "https://github.com/spirex/projcli#readme",
+  "bugs": {
+    "url": "https://github.com/spirex/projcli/issues"
+  },
+  "type": "module",
+  "main": "lib/cli.js",
+  "bin": {
+    "proj": "bin/proj.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "private": false,
+  "files": [
+    "bin",
+    "help",
+    "lib",
+    "templates",
+    "LICENSE",
+    "README.md"
+  ]
+}

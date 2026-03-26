@@ -1,0 +1,8 @@
+proj mv — rename under projects root
+
+Usage:
+  proj mv <fromBasename> <toBasename>
+  proj mv <ProjectName>   Interactive rename (empty input keeps current field)
+
+Paths are always relative to the configured projects root. For other moves use
+the system mv command.

@@ -1,0 +1,9 @@
+proj tags — list tag registry
+
+Usage:
+  proj tags
+
+Prints every tag id from {root}/.tags with its description (sorted by id).
+Ids without a description are printed on their own line.
+
+Requires a configured projects root (`proj dir <path>`).

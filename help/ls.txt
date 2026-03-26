@@ -1,0 +1,22 @@
+proj ls — list projects
+
+Usage:
+  proj ls [--json] [-f] [-o <chars>] [-t <chars>] [--grep <re>] [tagId ...]
+
+  --json      Print JSON array (compact; basename, path, own, type, projectName, tags, displayName, favorite)
+  --grep <re> Keep projects whose display line matches the regexp (case-insensitive)
+  -f          Only projects listed in .fav/ (resolved symlinks)
+  -o <chars>  Filter by ownership letters (e.g. -o p or -o pg for p OR g)
+  -t <chars>  Filter by type letters (e.g. -t a or -t ax)
+
+Positional arguments are tag ids (camelCase); ALL must appear on the project (AND).
+Using -f avoids clashing with a tag literally named "fav".
+
+Output format (one project per line):
+  ProjectName (ownership type) — tag1, tag2, ...
+  Example: MyApp (personal application) — web, rn
+
+Examples:
+  proj ls
+  proj ls -f
+  proj ls -o p -t a web rn

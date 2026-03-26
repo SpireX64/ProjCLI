@@ -1,0 +1,6 @@
+proj open — open project in editor
+
+Usage:
+  proj open <ProjectName|basename>
+
+Uses $EDITOR, then $VISUAL, then `code`, passing the project directory path.

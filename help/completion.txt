@@ -1,0 +1,16 @@
+proj completion — print shell completion script
+
+Usage:
+  proj completion bash
+  proj completion zsh
+  proj completion fish
+
+Examples:
+  source <(proj completion bash)
+  # zsh: add to ~/.zshrc
+  source <(proj completion zsh)
+
+Internal: `proj __complete commands|projects|fav-names` is used by the script; not needed for normal use.
+
+Shell snippets live under templates/completion/ in the package (bash.sh, zsh.sh, fish.sh).
+The list of subcommands for `__complete commands` comes from lib/public-commands.js (same list as help pages).

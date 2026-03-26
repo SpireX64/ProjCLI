@@ -1,0 +1,10 @@
+proj get — print one key from .projrc
+
+Usage:
+  proj get <ProjectName|basename> <key>
+
+Keys are case-insensitive. Special cases:
+  name    — display name from .projrc, or folder ProjectName if unset
+  created — from .projrc or inferred from first commit in repo/
+
+Exit code 1 if key is missing (except name/created).

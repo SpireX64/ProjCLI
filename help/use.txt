@@ -1,0 +1,13 @@
+proj use — switch between saved workspace roots
+
+Usage:
+  proj use
+  proj use <workspace-name>
+
+Without arguments: prints workspace names and paths from ~/.config/proj/config.json.
+
+With a name: sets the active projects root to that workspace's path.
+
+Save a workspace with:
+  proj dir /path/to/projects -w mywork
+  proj dir -w mywork    # saves current root under name mywork

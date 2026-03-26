@@ -1,0 +1,7 @@
+proj fav — favorites
+
+Usage:
+  proj fav <target>     Add symlink .fav/<projectBasename> -> ../<projectBasename>
+  proj fav -d <name>    Remove symlink by name
+
+<target> may be project basename or ProjectName.

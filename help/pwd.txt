@@ -1,0 +1,8 @@
+proj pwd — print path
+
+Usage:
+  proj pwd              Print projects root (same as `proj dir` when set)
+  proj pwd <name>       Print absolute path to project (basename or ProjectName)
+
+Shell note: Node cannot change the parent shell directory. Use:
+  cd "$(proj pwd <ProjectName>)"

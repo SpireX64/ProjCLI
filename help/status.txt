@@ -1,0 +1,11 @@
+proj status — repository summary across projects or details for one
+
+Usage:
+  proj status [--json]
+  proj status <ProjectName|basename> [--json]
+
+  --json      Print JSON (summary array without a name; one detail object with a name)
+
+Without a name: one line per project (basename, whether repo/.git exists, branch, clean/dirty, worktree count).
+
+With a name: full detail including .projrc fields, main repo, worktrees, and task files in tasks/ (top level only).
