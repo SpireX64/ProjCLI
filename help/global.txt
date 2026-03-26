@@ -16,6 +16,7 @@ Commands:
   status [name] [--json] Git-style summary for all projects, or details for one (JSON with --json)
   get <name> <key>       Print one value from .projrc (keys case-insensitive)
   set <name> <key> <value> Write one key in .projrc (trailing # on a line is a comment)
+  set -d <name> <key>    Remove a key from .projrc
   fav <target>           Add favorite symlink in .fav/
   fav -d <name>          Remove favorite symlink
   mv <from> <to>         Rename project under projects root (or interactive: mv <name>)
@@ -29,6 +30,10 @@ Commands:
   completion bash|zsh|fish   Print shell completion script (source it)
 
 Run `proj <command> --help` for details.
+
+Where a command takes <name> (project basename or ProjectName), you may use `.` or `@`
+for the current project: cwd must be under the projects root; the first path segment
+under that root is the project folder, and it must contain `.projrc`.
 
 Shell: this tool cannot change your shell cwd. Use:
   cd "$(proj pwd <ProjectName>)"

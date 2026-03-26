@@ -32,3 +32,4 @@ test('expandEditorTemplate $rc_* non-path keys are literal quoted', () => {
   const out = expandEditorTemplate('x $rc_tracker y', '/wt', '/proj', m);
   assert.equal(out, `x ${q('https://github.com/org/repo')} y`);
 });
+

@@ -6,7 +6,7 @@ import path from 'path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-import { parseProjrcText, serializeProjrc, getDisplayName } from '../lib/projrc.js';
+import { parseProjrcText, serializeProjrc, getDisplayName, removeProjrcKey } from '../lib/projrc.js';
 
 test('parseProjrcText comments and case', () => {
   const text = `
@@ -36,6 +36,25 @@ test('serializeProjrc stable', () => {
 test('getDisplayName fallback', () => {
   assert.equal(getDisplayName(new Map(), 'FooBar'), 'FooBar');
   assert.equal(getDisplayName(new Map([['name', 'Nice']]), 'FooBar'), 'Nice');
+});
+
+test('removeProjrcKey removes line', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'projrc-'));
+  try {
+    const proj = path.join(dir, 'pa');
+    fs.mkdirSync(proj, { recursive: true });
+    fs.writeFileSync(
+      path.join(proj, '.projrc'),
+      'tracker = https://x.test\nname = A\n',
+      'utf8'
+    );
+    removeProjrcKey(proj, 'Tracker');
+    const text = fs.readFileSync(path.join(proj, '.projrc'), 'utf8');
+    assert.ok(!text.includes('tracker'));
+    assert.ok(text.includes('name'));
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test('parseProjrcText preserves # in URL and strips value-only trailing comment', () => {

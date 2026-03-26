@@ -2,11 +2,17 @@ proj set — write a key in .projrc
 
 Usage:
   proj set <ProjectName|basename> <key> <value>
+  proj set -d <ProjectName|basename> <key>
+  proj set <ProjectName|basename> <key> -d   # same as -d first (flag may appear anywhere)
 
 Keys are stored lowercase. The value may contain spaces (everything after the key is the value).
+
+With -d, remove that key from .projrc (no value). The flag can be leading or trailing.
 
 Examples:
   proj set MyApp tracker https://github.com/org/repo#issues
   proj set MyApp editor vim          # use named editor from `proj editor`
   proj set MyApp workspace My.code-workspace   # for templates using $rc_workspace (VS Code)
   proj set MyApp tags web, mobile    # prefer proj tag -p for single-tag changes
+  proj set -d MyApp tracker          # remove tracker from .projrc
+  proj set MyApp tracker -d          # same

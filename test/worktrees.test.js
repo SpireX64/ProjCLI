@@ -59,3 +59,11 @@ test('parseOpenFlags -r vs --wt mutual exclusion', () => {
   assert.equal(a.wtSlug, 'absent');
   assert.throws(() => parseOpenFlags(['MyApp', '-r', '--wt', 'x']), /only one of/);
 });
+
+test('parseOpenFlags ignores unsupported flags', () => {
+  const r = parseOpenFlags(['.', '--bogus', '-x', 'code']);
+  assert.deepEqual(r.positional, ['.', 'code']);
+  assert.equal(r.openRoot, false);
+  const r2 = parseOpenFlags(['MyApp', '--foo']);
+  assert.deepEqual(r2.positional, ['MyApp']);
+});
