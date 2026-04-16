@@ -9,3 +9,9 @@ the system mv command.
 
 Tags are stored in each project’s .projrc (`tags`); change them with
 `proj tag … -p`, not with mv.
+
+When the ProjectName in the folder basename changes, directories under
+`worktrees/<Project>-<slug>` are renamed to match, and git metadata is updated
+(`git worktree repair` / `git worktree move`). Git 2.30+ is required if the
+main worktree has a `.git` directory. If a command fails, check
+`git worktree list` and try `git worktree repair` from the main worktree.
