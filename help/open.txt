@@ -4,11 +4,16 @@ Usage:
   proj open <ProjectName|basename> [options] [<editorName>]
 
 Options:
-  -r, --root     Open the project root (pa_* folder), not a worktree
-  --wt <slug>    Open worktrees/<ProjectName>-<slug> (slug or full folder name)
+  -r, --root          Open the project root (pa_* folder), not a worktree (-p is ignored)
+  --wt <slug>         Open worktrees/<ProjectName>-<slug> (slug or full folder name)
+  -p, --project <id>  Open a subfolder under the worktree (see Monorepo below)
 
 Default: opens the main worktree worktrees/<ProjectName>-main (even if there is no .git yet).
 -r and --wt cannot be used together.
+
+Monorepo: in .projrc define paths relative to the worktree, e.g. p_core = packages/core
+(keys are lowercased). Then: proj open MyProject -p core
+Uses main worktree if --wt is omitted; combine with --wt <slug> for another worktree.
 
 Without <editorName>: if .projrc has `editor = <name>` and that name is configured via
 `proj editor`, that template is used. Otherwise uses $EDITOR, then $VISUAL, then `code`.
@@ -28,5 +33,6 @@ Examples:
   proj open MyProject
   proj open MyProject -r
   proj open MyProject --wt StoreRefactor
+  proj open MyProject -p core
   proj editor vim 'nvim $dir'
   proj open MyProject vim

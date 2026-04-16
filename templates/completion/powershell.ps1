@@ -158,7 +158,7 @@ $script:ProjComplete = {
         return Out-ProjMatches -Items $items -Wc $wcToken -ShellWord $wordToComplete
       }
       if ($curIdx -eq 3) {
-        $items = @('-r', '--root', '--wt', '-h', '--help') + @(Get-ProjCompleteLines editors)
+        $items = @('-r', '--root', '--wt', '-p', '--project', '-h', '--help') + @(Get-ProjCompleteLines editors)
         return Out-ProjMatches -Items $items -Wc $wcToken -ShellWord $wordToComplete
       }
     }
@@ -168,7 +168,7 @@ $script:ProjComplete = {
         return Out-ProjMatches -Items $items -Wc $wcToken -ShellWord $wordToComplete
       }
       if ($curIdx -eq 3) {
-        return Out-ProjMatches -Items @('--wt', '-h', '--help') -Wc $wcToken -ShellWord $wordToComplete
+        return Out-ProjMatches -Items @('-r', '--root', '--wt', '-p', '--project', '-h', '--help') -Wc $wcToken -ShellWord $wordToComplete
       }
       if ($curIdx -ge 4 -and $toks[3] -eq '--wt') {
         return Out-ProjMatches -Items @('main') -Wc $wcToken -ShellWord $wordToComplete

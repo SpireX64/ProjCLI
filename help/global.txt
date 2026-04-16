@@ -6,13 +6,13 @@ Usage:
 Commands:
   dir [path] [-w name]   Show/set projects root; register named workspace (proj dir --help)
   use [workspace]        Switch root to a saved workspace, or list workspaces
-  pwd [name] [--wt [slug]] Print projects root, project path, or worktree path (proj pwd --help)
+  pwd [name] [opts]      Print projects root or path like `open` (proj pwd --help)
   ls [options] [tags...] List projects (-f, --json, --grep, -o -t filters)
   tags                   List all tag ids and descriptions from .tags
   new [path] [--dry-run] [--force] Create project layout (import needs TTY or --force)
   clone <url>            git clone into a new project layout (interactive naming)
   editor <name> <tmpl>   Save named editor command ($dir = project path)
-  open <name> [opts] [editor] Open main worktree or project root (proj open --help)
+  open <name> [opts] [editor] Open worktree, root, or subproject (proj open --help)
   status [name] [--json] Git-style summary for all projects, or details for one (JSON with --json)
   get <name> <key>       Print one value from .projrc (keys case-insensitive)
   set <name> <key> <value> Write one key in .projrc (trailing # on a line is a comment)
@@ -36,4 +36,4 @@ for the current project: cwd must be under the projects root; the first path seg
 under that root is the project folder, and it must contain `.projrc`.
 
 Shell: this tool cannot change your shell cwd. Use:
-  cd "$(proj pwd <ProjectName>)"
+  cd "$(proj pwd <ProjectName>)"     # main worktree; use -r for pa_* root

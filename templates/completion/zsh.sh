@@ -68,13 +68,13 @@ _proj() {
     open)
       case $CURRENT in
         3) compadd -- -h --help; compadd -a projects ;;
-        4) compadd -- -r --root --wt -h --help; compadd -a editors ;;
+        4) compadd -- -r --root --wt -p --project -h --help; compadd -a editors ;;
       esac
       ;;
     pwd)
       case $CURRENT in
         3) compadd -- -h --help; compadd -a projects ;;
-        4) compadd -- --wt -h --help ;;
+        4) compadd -- -r --root --wt -p --project -h --help ;;
         *)
           (( CURRENT >= 5 )) && [[ $words[CURRENT-1] == --wt ]] && compadd main
           ;;

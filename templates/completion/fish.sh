@@ -144,12 +144,12 @@ complete -c proj -n '__fish_seen_subcommand_from verify tags; and test (count (c
 complete -c proj -n '__fish_seen_subcommand_from open; and test (count (commandline -opc)) -eq 2' -a '-h --help'
 complete -c proj -n '__fish_seen_subcommand_from open; and test (count (commandline -opc)) -eq 2' -a '(proj __complete projects 2>/dev/null)'
 complete -c proj -n '__fish_seen_subcommand_from open; and test (count (commandline -opc)) -eq 3' -a '(proj __complete editors 2>/dev/null)'
-complete -c proj -n '__fish_seen_subcommand_from open; and test (count (commandline -opc)) -eq 3' -a '-r --root --wt -h --help'
+complete -c proj -n '__fish_seen_subcommand_from open; and test (count (commandline -opc)) -eq 3' -a '-r --root --wt -p --project -h --help'
 
 # pwd
 complete -c proj -n '__fish_seen_subcommand_from pwd; and test (count (commandline -opc)) -eq 2' -a '-h --help'
 complete -c proj -n '__fish_seen_subcommand_from pwd; and test (count (commandline -opc)) -eq 2' -a '(proj __complete projects 2>/dev/null)'
-complete -c proj -n '__fish_seen_subcommand_from pwd; and test (count (commandline -opc)) -eq 3' -a '--wt -h --help'
+complete -c proj -n '__fish_seen_subcommand_from pwd; and test (count (commandline -opc)) -eq 3' -a '-r --root --wt -p --project -h --help'
 complete -c proj -n '__fish_seen_subcommand_from pwd; and __fish_proj_pwd_after_wt' -a main
 
 # wt

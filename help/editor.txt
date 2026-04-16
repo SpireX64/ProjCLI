@@ -5,7 +5,8 @@ Usage:
 
 The template is run through the system shell. Placeholders (paths are quoted for you):
 
-  $dir   Directory being opened (worktree, --wt target, or project root with -r).
+  $dir   Directory being opened (worktree, optional -p subfolder under it, --wt target,
+         or project root with -r).
   $root  Project root (pa_* folder), even when $dir is a worktree.
 
   $rc_<key>  Value from that project's .projrc (keys are lowercased in .projrc).

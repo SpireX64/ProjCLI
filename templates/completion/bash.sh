@@ -84,14 +84,14 @@ _proj() {
       if [ "$COMP_CWORD" -eq 2 ]; then
         COMPREPLY=( $(compgen -W "-h --help $(__proj_projects)" -- "$cur") )
       elif [ "$COMP_CWORD" -eq 3 ]; then
-        COMPREPLY=( $(compgen -W "-r --root --wt -h --help $(__proj_editors)" -- "$cur") )
+        COMPREPLY=( $(compgen -W "-r --root --wt -p --project -h --help $(__proj_editors)" -- "$cur") )
       fi
       ;;
     pwd)
       if [ "$COMP_CWORD" -eq 2 ]; then
         COMPREPLY=( $(compgen -W "-h --help $(__proj_projects)" -- "$cur") )
       elif [ "$COMP_CWORD" -eq 3 ]; then
-        COMPREPLY=( $(compgen -W "--wt -h --help" -- "$cur") )
+        COMPREPLY=( $(compgen -W "-r --root --wt -p --project -h --help" -- "$cur") )
       elif [ "$COMP_CWORD" -ge 4 ] && [ "${COMP_WORDS[3]}" = "--wt" ]; then
         COMPREPLY=( $(compgen -W "main" -- "$cur") )
       fi

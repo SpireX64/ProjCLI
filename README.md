@@ -124,10 +124,15 @@ If the root is not set, commands that need it exit with an error and print a hin
 This program cannot change your current shell directory. Print a project path and change directory in the shell:
 
 ```bash
-cd "$(proj pwd MyProjectName)"
+cd "$(proj pwd MyProjectName)"       # main worktree (same default as proj open)
+cd "$(proj pwd MyProjectName -r)"    # pa_* project root (notes/, tasks/, worktrees/, …)
 ```
 
 (`MyProjectName` is the PascalCase middle segment of the folder name, or the full project basename.)
+
+Monorepo subfolders: in `.projrc` set paths relative to a worktree, e.g. `p_core = packages/core`.
+Then `proj open MyProject -p core` or `proj pwd MyProject -p core` uses that folder under the
+main worktree (or under `--wt <slug>`). Keys use the `p_` prefix and are lowercased like other `.projrc` keys.
 
 ## Shell completion
 
@@ -191,13 +196,13 @@ proj tag -d web    # fails if any project still uses tag web
 |--------|---------|
 | `proj dir [path] [-w name]` | Show/set root; register named workspace (see Setup) |
 | `proj use [name]` | List or switch workspaces |
-| `proj pwd [name] [--wt [slug]]` | Print root, project path, or worktree path |
+| `proj pwd [name] [-r] [--wt [slug]] [-p id]` | Print root, main worktree, other worktree, or monorepo subpath |
 | `proj ls [--json] [-f] [--grep re] [-o chars] [-t chars] [tags...]` | List projects |
 | `proj tags` | Print all tag ids and descriptions from `.tags` |
 | `proj new [path] [--dry-run] [--force]` | Create layout + `.projrc` (import: TTY confirm or `--force`) |
 | `proj clone <url>` | New layout + `git clone` into `worktrees/<ProjectName>-main/` |
 | `proj editor <name> <template>` | Save a shell command template for editors |
-| `proj open <name> [-r] [--wt slug] [editor]` | Open main worktree, project root, or extra worktree in editor |
+| `proj open <name> [-r] [--wt slug] [-p id] [editor]` | Open main worktree, root, extra worktree, or monorepo subfolder |
 | `proj wt <name> <slug> [-b branch]` | Add linked git worktree under `worktrees/` |
 | `proj status [name] [--json]` | Summary or one-project detail; `--json` for machine-readable output |
 | `proj get <name> <key>` | One value from `.projrc` (for scripts) |

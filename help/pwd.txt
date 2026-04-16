@@ -2,11 +2,19 @@ proj pwd — print path
 
 Usage:
   proj pwd                        Print projects root (same as `proj dir` when set)
-  proj pwd <name>                 Print absolute path to project root (basename or ProjectName)
-  proj pwd <name> --wt            Print path to main worktree (worktrees/<ProjectName>-main)
+  proj pwd <name>                 Print path to main worktree (worktrees/<ProjectName>-main)
+  proj pwd <name> -r              Print path to project root (pa_* folder)
+  proj pwd <name> --wt            Print path to main worktree (same as default without flags)
   proj pwd <name> --wt <slug>     Print path to worktrees/<ProjectName>-<slug>
+  proj pwd <name> -p <id>         Print path under the worktree (see proj open --help)
+
+Options -r, --root, --wt, -p, --project match `proj open` (default directory is the main
+worktree; use -r for the pa_* root). -p is ignored with -r.
+
+Monorepo: define p_<id> in .projrc (path relative to the chosen worktree), then -p <id>.
 
 Shell note: Node cannot change the parent shell directory. Examples:
   cd "$(proj pwd <ProjectName>)"
-  cd "$(proj pwd <ProjectName> --wt)"
+  cd "$(proj pwd <ProjectName> -r)"
   cd "$(proj pwd <ProjectName> --wt my-branch)"
+  cd "$(proj pwd <ProjectName> -p core)"
